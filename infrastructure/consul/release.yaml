@@ -2,15 +2,16 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: consul
+  namespace: consul
 spec:
   releaseName: consul
   chart:
     spec:
-      chart: consul
+      chart: hashicorp/consul
       sourceRef:
         kind: HelmRepository
         name: hashicorp
-        namespace: consul
+        # namespace: consul
       version: "0.43.0"
   interval: 1h0m0s
   install:

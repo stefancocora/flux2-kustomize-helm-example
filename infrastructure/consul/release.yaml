@@ -1,3 +1,6 @@
+---
+# see helm configuration in
+# https://www.consul.io/docs/k8s/helm#ui
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -31,7 +34,7 @@ spec:
       enabled: true
       image: null
       replicas: 3
-      bootstrapExpect: 3 # Should <= replicas count
+      bootstrapExpect: 3  # Should <= replicas count
     client:
       enabled: true
       image: null
@@ -39,9 +42,12 @@ spec:
     ui:
       enabled: true
       hosts:
-        - consul.staging
+        - host: consul.staging
+          paths:
+            - /ui
       ingress:
         enabled: true
-        # annotations: "kubernetes.io/ingress.class: nginx"
+        annotations: |
+          'kubernetes.io/ingress.class': nginx
     tests:
       enabled: true

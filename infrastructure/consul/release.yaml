@@ -21,8 +21,6 @@ spec:
   # https://artifacthub.io/packages/helm/hashicorp/consul?modal=values
   # https://github.com/hashicorp/consul-k8s/blob/main/charts/consul/values.yaml
   values:
-    global:
-      image: "hashicorp/consul:1.12.0"
     gossipEncryption:
       secretName: "gossipenc"
       secretKey: "cb98bfa0"
@@ -30,19 +28,18 @@ spec:
       enabled: true
       enableAutoEncrypt: true
     server:
-      enabled: "true"
+      enabled: true
       image: null
       replicas: 3
       bootstrapExpect: 3 # Should <= replicas count
     client:
-      enabled: "true"
+      enabled: true
       image: null
       join: null
     ui:
-      enabled: "true"
-      # ingress:
-      #   enabled: true
-      #   annotations:
-      #     kubernetes.io/ingress.class: nginx
+      enabled: true
+      ingress:
+        enabled: true
+        # annotations: "kubernetes.io/ingress.class: nginx"
     tests:
       enabled: true

@@ -38,6 +38,8 @@ spec:
       join: null
     ui:
       enabled: true
+      hosts:
+        - consul.staging
       ingress:
         enabled: true
         # annotations: "kubernetes.io/ingress.class: nginx"

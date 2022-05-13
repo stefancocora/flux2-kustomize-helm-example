@@ -41,12 +41,12 @@ spec:
       join: null
     ui:
       enabled: true
-      hosts:
-        - host: consul.staging
-          paths:
-            - /ui
       ingress:
         enabled: true
+        hosts:
+          - host: consul.staging
+            paths:
+              - /ui
         annotations: |
           'kubernetes.io/ingress.class': nginx
     tests:
